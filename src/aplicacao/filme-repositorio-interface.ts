@@ -1,12 +1,10 @@
-export default interface filmeReposotorioInterface{
-    salvar(filme: filmeDTO): Promise<boolean>;
-    listar(): Promise<boolean[]>;
-
+export default interface FilmeRepositorioInterface {
+    salvar(filme: FilmeDTO): Promise<boolean>;
+    listar(): Promise<FilmeDTO[]>;
 }
-type filmeDTO = {
-    id:number,
-    titulo:string,
-    descricao:string,
-    foto:string
-
+type FilmeDTO = {
+    id: number,
+    titulo: string,
+    descricao: string,
+    foto: string
 }
