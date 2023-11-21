@@ -1,40 +1,41 @@
-import {expect, describe, test} from 'vitest'
-import BancoEmMemoria from '../infra/banco/banco-em-memoria'
-import ListarFilme from './listar-filme.use-case'
+import { describe, expect, test,beforeEach } from "vitest";
+import ListaFilme from "./listar-filme.use-case";
+import BancoEmMemoria from "../infra/banco/banco-em-memoria";
+describe("ListaFilme", () => {
+    const bancoEmMemoria = new BancoEmMemoria();
 
-describe("Listar filme",()=>{
-    test("Deve listar filme",async ()=>{
-        const bancoEmMemoria = new BancoEmMemoria()
-        bancoEmMemoria.dados = [
-            {
-                id:1,
-                titulo:"test",
-                descricao:"test",
-                foto:"test",
-            },
-            {
-                id:2,
-                titulo:"test",
-                descricao:"test",
-                foto:"test",
-            }
-        ]
-        const listarFilme = new ListarFilme(bancoEmMemoria)
-        const result = await listarFilme.execute()
-        expect(result.length).toBe(2)
-        expect(result[0].id).toBe(1)
-        expect(result[1].id).toBe(2)
-        expect(result[0]).toEqual({
-            id:1,
-            titulo:"test",
-            descricao:"test",
-            foto:"test",
-        })
-        expect(result[1]).toEqual({
-            id:2,
-            titulo:"test",
-            descricao:"test",
-            foto:"test",
-        })
-    })
+    beforeEach(async () => {
+        bancoEmMemoria.filmes = [{
+            id: 1,
+            titulo: "O Poderoso Chefão",
+            descricao: "Filme de máfia",
+            imagem: "fotofilme.jpg"
+        },
+        {
+            id: 2,
+            titulo: "O Poderoso Chefão 2",
+            descricao: "Filme de máfia",
+            imagem: "fotofilme.jpg"
+        
+        }]
+    });
+
+    test("deve retornar uma lista de filmes", async () => {
+        const listaFilme = new ListaFilme(bancoEmMemoria);
+        const filmes = await listaFilme.executar();
+        expect(filmes.length).toBe(2);
+        expect(filmes[0].id).toBe(1);
+        expect(filmes[0]).toEqual({
+            id: 1,
+            titulo: "O Poderoso Chefão",
+            descricao: "Filme de máfia",
+            imagem: "fotofilme.jpg"
+        });
+        expect(filmes[1]).toEqual({
+            id: 2,
+            titulo: "O Poderoso Chefão 2",
+            descricao: "Filme de máfia",
+            imagem: "fotofilme.jpg"
+        });
+    });
 })
