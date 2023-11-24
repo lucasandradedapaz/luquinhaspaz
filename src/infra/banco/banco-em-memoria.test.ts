@@ -9,7 +9,7 @@ describe('BancoEmMemoria', () => {
             id:1,
             titulo:'Filme 1',
             descricao:'Descrição do filme 1',
-            imagem:'imagem.jpg'
+            imagem:'src/infra/banco/img/carlbarbie.jpg'
         }
         //Processamento
         const bancoEmMemoria = new BancoEmMemoria()
@@ -25,7 +25,7 @@ describe('BancoEmMemoria', () => {
             id:1,
             titulo:'Filme 1',
             descricao:'Descrição do filme 1',
-            imagem:'imagem.jpg'
+            imagem:'src/infra/banco/img/rickbarbie.jpg'
         }
         //processamento
         const bancoEmMemoria = new BancoEmMemoria()
@@ -40,13 +40,13 @@ describe('BancoEmMemoria', () => {
             id:1,
             titulo:'Filme 1',
             descricao:'Descrição do filme 1',
-            imagem:'imagem.jpg'
+            imagem:'src/infra/banco/img/rickbarbie.jpg'
         }
         const filme2 = {
             id:2,
             titulo:'Filme 1',
             descricao:'Descrição do filme 1',
-            imagem:'imagem.jpg'
+            imagem:'src/infra/banco/img/rickbarbie.jpg'
         }
         //processamento
         const bancoEmMemoria = new BancoEmMemoria()
